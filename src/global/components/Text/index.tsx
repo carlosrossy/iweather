@@ -1,14 +1,12 @@
-import { spacing } from "@global/styles";
-import { colors } from "@global/styles/colors";
-import {
-  ColorType,
-  SpacingType,
-  TypographyStylesType,
-} from "@global/styles/typesTheme";
-import { typography } from "@global/styles/typography";
 import React, { ReactNode } from "react";
 import { Text as RNText, TextProps, TextStyle } from "react-native";
 import { scale } from "react-native-size-matters";
+
+
+import { ColorType, SpacingType, TypographyStylesType } from "@global/styles/typesTheme";
+import { typography } from "@global/styles/typography";
+import { colors } from "@global/styles/colors";
+import { spacing } from "@global/styles";
 
 type IStylesProps = TextStyle & TextProps;
 

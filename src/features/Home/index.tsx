@@ -12,6 +12,7 @@ import {
   getWeatherByCityService,
 } from "@global/config/getWeatherByCityService";
 import { WeatherDetails } from "@global/components/WeatherDetails";
+import { NextDays } from "@global/components/NextDays/indes";
 
 export function Dashboard() {
   const [search, setSearch] = useState("");
@@ -85,10 +86,10 @@ export function Dashboard() {
 
       <WeatherToday city={city.name} weather={weather.today.weather} />
 
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <S.Scroll showsVerticalScrollIndicator={false}>
         <WeatherDetails data={weather.today.details} />
-        {/* <NextDays data={weather.nextDays} /> */}
-      </ScrollView>
+        <NextDays data={weather.nextDays} />
+      </S.Scroll>
     </View>
   );
 }

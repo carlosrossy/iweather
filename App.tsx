@@ -13,6 +13,7 @@ import theme from "@global/styles/theme";
 
 import { ActivityIndicator, View } from "react-native";
 import { ThemeProvider } from "styled-components";
+import { CityProvider } from "@global/context/CityContext";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -37,7 +38,9 @@ export default function App() {
   }
   return (
     <ThemeProvider theme={theme}>
-      <Search />
+      <CityProvider>
+        <Search />
+      </CityProvider>
     </ThemeProvider>
   );
 }

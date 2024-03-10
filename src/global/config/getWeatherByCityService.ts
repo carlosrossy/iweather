@@ -70,12 +70,6 @@ export async function getWeatherByCityService(
   const daysAdded: string[] = [];
   const nextDays: DayProps[] = [];
 
-  const dateTime = DateTime.fromFormat(
-    "2024-03-10 21:00:00",
-    "yyyy-MM-dd HH:mm:ss"
-  );
-  const formattedDate = dateTime.toFormat("dd/MM");
-
   data.list.forEach((item) => {
     const dateTime = DateTime.fromFormat(item.dt_txt, "yyyy-MM-dd HH:mm:ss");
     const day = dateTime.toFormat("dd/MM");

@@ -1,28 +1,19 @@
 import styled from "styled-components/native";
 
 export const Container = styled.View`
+  flex: 1;
   background-color: ${({ theme }) => theme.colors.GRAY_700};
   padding: 20px;
-  border-radius: 12px;
+  border-radius: 8px;
 `;
 
-// export const Container = styled.Image.attrs({
-//   resizeMode: "cover",
-// })`
-//   background-color: ${({ theme }) => theme.colors.GRAY_700};
-//   padding: 20px;
-//   border-radius: 8px;
-//   justify-content: space-between;
-//   overflow: hidden;
-// `;
-
-export const Photo = styled.Image.attrs({
+export const Image = styled.Image.attrs({
   resizeMode: "cover",
 })`
+  width: 100%;
+  height:  335px;
   padding: 20px;
   border-radius: 8px;
-  justify-content: space-between;
-  overflow: hidden;
 `;
 
 export const Footer = styled.View`

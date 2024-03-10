@@ -38,19 +38,23 @@ export function SelectList({
         value={value}
       />
 
-      <S.Options>
-        {data.map((item) => (
-          <S.Button
-            key={item.latitude}
-            activeOpacity={0.7}
-            onPress={() => onPress && onPress(item)}
-          >
-            <Text variant="Inter_400Regular" color="GRAY_100" fontSize={16}>
-              {item.name}
-            </Text>
-          </S.Button>
-        ))}
-      </S.Options>
+      {!isLoading ? (
+        <S.Options>
+          {data.map((item) => (
+            <S.Button
+              key={item.latitude}
+              activeOpacity={0.7}
+              onPress={() => onPress && onPress(item)}
+            >
+              <Text variant="Inter_400Regular" color="GRAY_100" fontSize={16}>
+                {item.name}
+              </Text>
+            </S.Button>
+          ))}
+        </S.Options>
+      ) : (
+        <></>
+      )}
     </S.Container>
   );
 }

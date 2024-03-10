@@ -32,11 +32,6 @@ export interface WeatherAPIResponseProps {
   }[];
 }
 
-type SearchCityWeatherProps = {
-  latitude: number;
-  longitude: number;
-};
-
 export type WeatherResponseProps = {
   today: {
     weather: WeatherTodayProps;
@@ -45,10 +40,10 @@ export type WeatherResponseProps = {
   nextDays: DayProps[];
 };
 
-export async function getWeatherByCityService({
-  latitude,
-  longitude,
-}: SearchCityWeatherProps): Promise<WeatherResponseProps> {
+export async function getWeatherByCityService(
+  latitude: number,
+  longitude: number
+): Promise<WeatherResponseProps> {
   const { data } = await api.get<WeatherAPIResponseProps>(
     `/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
   );
@@ -75,8 +70,16 @@ export async function getWeatherByCityService({
   const daysAdded: string[] = [];
   const nextDays: DayProps[] = [];
 
+  const dateTime = DateTime.fromFormat(
+    "2024-03-10 21:00:00",
+    "yyyy-MM-dd HH:mm:ss"
+  );
+  const formattedDate = dateTime.toFormat("dd/MM");
+
   data.list.forEach((item) => {
-    const day = DateTime.fromISO(item.dt_txt).toFormat("dd/MM");
+    const dateTime = DateTime.fromFormat(item.dt_txt, "yyyy-MM-dd HH:mm:ss");
+    const day = dateTime.toFormat("dd/MM");
+    const formattedDayOfWeek = dateTime.toFormat("EEE");
 
     if (days.includes(day) && !daysAdded.includes(day)) {
       daysAdded.push(day);
@@ -86,7 +89,7 @@ export async function getWeatherByCityService({
       const details = weatherIcons[status];
 
       nextDays.push({
-        day: DateTime.fromISO(item.dt_txt).toFormat("EEE"),
+        day: formattedDayOfWeek,
         min: `${Math.floor(item.main.temp_min)}ºc`,
         max: `${Math.ceil(item.main.temp_max)}ºc`,
         weather: item.weather[0].description,

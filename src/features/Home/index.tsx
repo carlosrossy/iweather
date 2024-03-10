@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { ScrollView, View } from "react-native";
+import { ScrollView } from "react-native";
 
 import * as S from "./styles";
 import { CityProps, SelectList } from "@global/components/SelectCity";
@@ -13,6 +13,7 @@ import {
 } from "@global/config/getWeatherByCityService";
 import { WeatherDetails } from "@global/components/WeatherDetails";
 import { NextDays } from "@global/components/NextDays/indes";
+import { Spacer } from "@global/components/Spacer";
 
 export function Dashboard() {
   const [search, setSearch] = useState("");
@@ -38,8 +39,10 @@ export function Dashboard() {
 
     setWeatherIsLoading(true);
 
-    const { latitude, longitude } = city;
-    const response = await getWeatherByCityService({ latitude, longitude });
+    const response = await getWeatherByCityService(
+      city.latitude,
+      city.longitude
+    );
 
     setWeather(response);
     setWeatherIsLoading(false);
@@ -75,21 +78,33 @@ export function Dashboard() {
 
   return (
     <S.Container>
-      <SelectList
-        data={cities}
-        value={search}
-        onChange={setSearch}
-        onPress={handleSelect}
-        isLoading={isSearching}
-        placeholder="Buscar local"
-      />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ marginBottom: 20 }}
+      >
+        <SelectList
+          data={cities}
+          value={search}
+          onChange={setSearch}
+          onPress={handleSelect}
+          isLoading={isSearching}
+          placeholder="Buscar local"
+        />
 
-      {/* <WeatherToday city={city.name} weather={weather.today.weather} /> */}
+        <Spacer height={10} />
 
-      {/* <S.Scroll showsVerticalScrollIndicator={false}>
+        <WeatherToday city={city.name} weather={weather.today.weather} />
+
+        <Spacer height={10} />
+
         <WeatherDetails data={weather.today.details} />
+
+        <Spacer height={10} />
+
         <NextDays data={weather.nextDays} />
-      </S.Scroll> */}
+
+        <Spacer height={20} />
+      </ScrollView>
     </S.Container>
   );
 }

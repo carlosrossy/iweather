@@ -6,7 +6,3 @@ export const Container = styled.View`
   padding: 20px;
   padding-bottom: 0;
 `;
-
-export const Scroll = styled.ScrollView`
-  padding-bottom: 32px;
-`;

@@ -14,7 +14,7 @@ import { Routes } from "routes";
 import { AppProvider } from "@global/context";
 
 export default function App() {
-  let [fontsLoaded] = useFonts({
+  const [fontsLoaded] = useFonts({
     Inter_400Regular,
     Inter_500Medium,
     Inter_600SemiBold,

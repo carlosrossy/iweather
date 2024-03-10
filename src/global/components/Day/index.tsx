@@ -3,6 +3,7 @@ import { SvgProps } from "react-native-svg";
 import Text from "../Text";
 
 import * as S from "./styles";
+import { Spacer } from "../Spacer";
 
 export interface DayProps {
   icon: React.FC<SvgProps>;
@@ -25,11 +26,17 @@ export function Day({ data }: IProps) {
         {data.day}
       </Text>
 
+      <Spacer height={4} />
+
       <Icon width={56} height={56} />
+
+      <Spacer height={4} />
 
       <Text variant="Inter_700Bold" fontSize={14} color="GRAY_100">
         {data.max}
       </Text>
+
+      <Spacer height={4} />
 
       <Text variant="Inter_700Bold" fontSize={14} color="GRAY_400">
         {data.min}

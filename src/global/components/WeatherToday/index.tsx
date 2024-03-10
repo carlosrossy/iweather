@@ -1,18 +1,24 @@
 import { DateTime } from "luxon";
 import { isDayTime } from "@global/utils/isDayTime";
-import { weatherIcons } from "@global/utils/weatherIcons";
 
 import { View } from "react-native";
 import Text from "../Text";
 
 import * as S from "./styles";
+import { SvgProps } from "react-native-svg";
 
 export type WeatherTodayProps = {
   temp: string;
   temp_min: string;
   temp_max: string;
   description: string;
-  details: typeof weatherIcons.Clouds;
+  details: {
+    name: string;
+    bg_day: string;
+    bg_night: string;
+    icon_day: React.FC<SvgProps>;
+    icon_night: React.FC<SvgProps>;
+  };
 };
 
 type Props = {
@@ -21,18 +27,25 @@ type Props = {
 };
 
 export function WeatherToday({ weather, city }: Props) {
-  const today = DateTime.local().toFormat("cccc, dd 'de' MMMM 'de' yyyy");
+ const today = DateTime.local().setLocale('pt-BR').toFormat("cccc, dd 'de' MMMM 'de' yyyy");
   const isDay = isDayTime();
 
-  const Icon = isDay ? weather.details?.icon_day : weather.details?.icon_night;
+  // const { bg_day, bg_night, icon_day, icon_night } = weather.details;
+
+  // const backgroundImage = isDay ? bg_day : bg_night;
+  // const IconComponent = isDay ? icon_day : icon_night;
+
+
+  // console.log(backgroundImage);
+  // console.log(IconComponent);
 
   return (
     <S.Container>
-      <S.Photo
+      {/* <S.Photo
         source={{
-          uri: isDay ? weather.details.bg_day : weather.details.bg_night,
+          uri: backgroundImage,
         }}
-      />
+      /> */}
       <View>
         <Text variant="Inter_700Bold" color="GRAY_100" fontSize={16}>
           {city}
@@ -59,7 +72,7 @@ export function WeatherToday({ weather, city }: Props) {
             {weather.description}
           </Text>
         </S.Details>
-        <Icon width={160} height={160} />
+        {/* <IconComponent width={160} height={160} /> */}
       </S.Footer>
     </S.Container>
   );

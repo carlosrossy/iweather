@@ -23,7 +23,6 @@ export default function Search() {
 
     setCities(response);
 
-    console.log(response);
     setIsLoading(false);
   }
 

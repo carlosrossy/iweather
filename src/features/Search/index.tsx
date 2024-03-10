@@ -42,12 +42,25 @@ export default function Search() {
         barStyle="light-content"
         backgroundColor={theme.colors.GRAY_900}
       />
-      <Text variant="Inter_500Medium" color="GRAY_100" fontSize={20}>
+      <Text
+        variant="Inter_500Medium"
+        color="GRAY_100"
+        fontSize={20}
+        textAlign="center"
+      >
         Boas vindas ao{" "}
-        <Text variant="Inter_500Medium" color="BLUE_LIGHT" fontSize={20}>
-          TypeWeather
+        <Text
+          variant="Inter_500Medium"
+          color="BLUE_LIGHT"
+          fontSize={20}
+          textAlign="center"
+        >
+          IWeather
         </Text>
       </Text>
+
+      <Spacer height={10}/>
+
       <Text variant="Inter_500Medium" color="GRAY_200" fontSize={13}>
         Escolha um local para ver a previsão do tempo
       </Text>

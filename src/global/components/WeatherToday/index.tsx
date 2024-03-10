@@ -2,7 +2,7 @@ import { DateTime } from "luxon";
 import { isDayTime } from "@global/utils/isDayTime";
 import { weatherIcons } from "@global/utils/weatherIcons";
 
-import { ImageBackground, View } from "react-native";
+import { View } from "react-native";
 import Text from "../Text";
 
 import * as S from "./styles";

@@ -8,12 +8,10 @@ import {
   Inter_700Bold,
 } from "@expo-google-fonts/inter";
 
-import Search from "@features/Search";
-import theme from "@global/styles/theme";
-
 import { ActivityIndicator, View } from "react-native";
-import { ThemeProvider } from "styled-components";
-import { CityProvider } from "@global/context/CityContext";
+import { Loading } from "@global/components/Loading";
+import { Routes } from "routes";
+import { AppProvider } from "@global/context";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -37,10 +35,8 @@ export default function App() {
     );
   }
   return (
-    <ThemeProvider theme={theme}>
-      <CityProvider>
-        <Search />
-      </CityProvider>
-    </ThemeProvider>
+    <AppProvider>
+      <Routes />
+    </AppProvider>
   );
 }

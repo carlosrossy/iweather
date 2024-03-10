@@ -24,26 +24,35 @@ export function WeatherDetails({ data }: IProps) {
   return (
     <S.Container>
       <WeatherItem
-        icon={thermometer}
+        icon={"ThermometerSvg"}
         title="Sensação térmica"
         value={data.feels_like}
       />
 
       <WeatherItem
-        icon={rain}
+        icon={"RainSvg"}
         title="Probabilidade de chuva"
         value={data.probability}
       />
 
       <WeatherItem
-        icon={wind}
+        icon={"WindSvg"}
         title="Velocidade do vento"
         value={data.wind_speed}
       />
 
-      <WeatherItem icon={drop} title="Umidade do ar" value={data.humidity} />
+      <WeatherItem
+        icon={"DropSvg"}
+        title="Umidade do ar"
+        value={data.humidity}
+      />
 
-      <WeatherItem icon={sun} title="Índice UV" value={data.temp_kf} isLast />
+      <WeatherItem
+        icon={"SunSvg"}
+        title="Índice UV"
+        value={data.temp_kf}
+        isLast
+      />
     </S.Container>
   );
 }

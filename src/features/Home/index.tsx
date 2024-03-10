@@ -74,7 +74,7 @@ export function Dashboard() {
   }
 
   return (
-    <View>
+    <S.Container>
       <SelectList
         data={cities}
         value={search}
@@ -84,12 +84,12 @@ export function Dashboard() {
         placeholder="Buscar local"
       />
 
-      <WeatherToday city={city.name} weather={weather.today.weather} />
+      {/* <WeatherToday city={city.name} weather={weather.today.weather} /> */}
 
-      <S.Scroll showsVerticalScrollIndicator={false}>
+      {/* <S.Scroll showsVerticalScrollIndicator={false}>
         <WeatherDetails data={weather.today.details} />
         <NextDays data={weather.nextDays} />
-      </S.Scroll>
-    </View>
+      </S.Scroll> */}
+    </S.Container>
   );
 }

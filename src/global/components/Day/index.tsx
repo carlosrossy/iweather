@@ -4,6 +4,7 @@ import Text from "../Text";
 
 import * as S from "./styles";
 import { Spacer } from "../Spacer";
+import { DateTime } from "luxon";
 
 export interface DayProps {
   icon: React.FC<SvgProps>;
@@ -17,13 +18,25 @@ interface IProps {
   data: DayProps;
 }
 
+const dayTranslations: { [key: string]: string } = {
+  Sun: "Dom",
+  Mon: "Seg",
+  Tue: "Ter",
+  Wed: "Qua",
+  Thu: "Qui",
+  Fri: "Sex",
+  Sat: "Sáb",
+};
+
 export function Day({ data }: IProps) {
   const { icon: Icon } = data;
+
+  const translatedDay = dayTranslations[data.day] || data.day;
 
   return (
     <S.Container>
       <Text variant="Inter_700Bold" fontSize={14} color="GRAY_200">
-        {data.day}
+        {translatedDay}
       </Text>
 
       <Spacer height={4} />
